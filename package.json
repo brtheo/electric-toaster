@@ -1,0 +1,22 @@
+{
+  "name": "electric-toaster",
+  "version": "1.0.0",
+  "description": "A helper class to fire a <burnt-toast> web component",
+  "main": "ElectricToaster.js",
+  "types": "ElectricToaster.d.ts",
+  "scripts": {
+    "build": "tsc --build tsconfig.json && tsc --build demo/tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "demo": "npm run build && es-dev-server --config",
+    "dev": "es-dev-server --watch"
+  },
+  "author": "Brossier Theo",
+  "license": "ISC",
+  "dependencies": {
+    "lit-element": "^2.3.1"
+  },
+  "devDependencies": {
+    "es-dev-server": "^1.46.5",
+    "typescript": "^3.8.3"
+  }
+}

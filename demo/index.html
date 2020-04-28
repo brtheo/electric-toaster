@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./app.js" defer type="module"></script>
+    <title>Toast Tester</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        *{
+            font-family: 'Poppins', cursive;
+        }
+        body {
+            margin: 0;
+            /*background: linear-gradient(95deg, #2b323a 0%, #1d0c1f 100%);*/
+            background-image: url("https://source.unsplash.com/random");
+            background-size: 100vw auto;
+        }
+        burnt-toast {
+            background: #12121279;
+            backdrop-filter: blur(30px) saturate(125%);
+            color: #fafafa;
+            padding: 15px;
+            grid-row-gap: 0px;
+            transition: background-color 0.2s;
+        }
+        burnt-toast:hover {
+            background-color: #252525;
+        }
+        burnt-toast .avatar img{
+            height: 65px;
+            border-radius: 50%;
+        }
+        burnt-toast.simple-toast .title {
+            font-size: 1.5rem;
+        }
+        burnt-toast.simple-toast .content {
+            color: rgba(255, 255, 255,0.7);
+        }
+        burnt-toast.simple-toast .footer {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255,0.5)
+        }
+        burnt-toast.verysimple-toast main {
+            grid-row: 1/2;
+        }
+    </style>
+</head>
+<body>
+    <button id="simple-toast">Send simple toast</button>
+    <button id="action-toast">Send action toast</button>
+    <button id="verysimple-toast">Send very simple toast</button>
+</body>
+</html>

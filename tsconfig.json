@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "ES2015",
+        "target": "ES2020",
+        "moduleResolution": "node",
+        "outDir": "./",
+        "experimentalDecorators": true,
+        "declaration": true,
+        "sourceMap": true,
+        "inlineSources": true,
+        "strictNullChecks": false
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": []
+}
