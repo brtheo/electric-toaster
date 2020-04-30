@@ -1,4 +1,4 @@
-import '../src/BurntToast.js';
+import './BurntToast.js';
 import { BurntToast } from "./BurntToast.js";
 export declare type ToastAnimation = {
     enter: [Keyframe[], KeyframeAnimationOptions];
