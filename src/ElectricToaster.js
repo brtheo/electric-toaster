@@ -1,4 +1,4 @@
-import '../src/BurntToast';
+import '../src/BurntToast.js';
 export default class ElectricToaster {
     /**
      * Defines a toast template

@@ -1,4 +1,4 @@
-import ElectricToaster from '../src/ElectricToaster.js';
+import ElectricToaster from '../ElectricToaster.js';
 const simpleToast = ({ title, content, avatar, date }) => /*html*/ `
         <header slot="header" class="avatar">
                 <img src="${avatar}"></img>   

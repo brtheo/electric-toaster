@@ -1,4 +1,4 @@
-import ElectricToaster, { ToastTemplate, ToastTemplateData, ToastAnimation } from '../src/ElectricToaster.js'
+import ElectricToaster, { ToastTemplate, ToastTemplateData, ToastAnimation } from '../ElectricToaster.js'
 const simpleToast: ToastTemplate = ({ title, content, avatar, date }: ToastTemplateData) => /*html*/`
         <header slot="header" class="avatar">
                 <img src="${avatar}"></img>   
