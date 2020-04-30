@@ -1,5 +1,4 @@
 import ElectricToaster from '../src/ElectricToaster.js';
-import '../src/BurntToast';
 const simpleToast = ({ title, content, avatar, date }) => /*html*/ `
         <header slot="header" class="avatar">
                 <img src="${avatar}"></img>   
@@ -9,6 +8,16 @@ const simpleToast = ({ title, content, avatar, date }) => /*html*/ `
                 <div class="content">${content}</div>               
         </main>
         <footer slot="footer" class="footer">${date}</footer>
+`;
+const newPostToast = ({ title, username, avatar }) => /*html*/ `
+        <header slot="header" class="avatar">
+                <img src="${avatar}"></img>   
+		</header>
+        <main slot="main">
+                <div class="title"><strong>${username}</strong> has a new post </div>
+                <div class="content"><i>${title}</i></div>               
+        </main>
+        <footer slot="footer" class="footer"><a href="#">continue reading...</a></footer>
 `;
 const actionToast = ({ title, content, btn, placeholder }) => /*html*/ `
         <header slot="header" class="title">${title}</header>
@@ -53,26 +62,29 @@ const actionAnimation = {
         { duration: 250 }
     ]
 };
-const electricToaster = new ElectricToaster("simple-toast", { template: simpleToast, type: 'simple', animation: simpleAnimation });
+const electricToaster = new ElectricToaster("simple-toast", { template: simpleToast, animation: simpleAnimation });
 electricToaster.registerTemplate('action-toast', { template: actionToast, type: 'action', animation: actionAnimation });
-electricToaster.registerTemplate('verysimple-toast', { template: minimumToast, type: 'simple', animation: simpleAnimation });
+electricToaster.registerTemplate('verysimple-toast', { template: minimumToast, animation: simpleAnimation });
+electricToaster.registerTemplate('newpost-toast', { template: newPostToast, animation: simpleAnimation });
 document.querySelector('#verysimple-toast')
-    .addEventListener('click', () => electricToaster.burn('verysimple-toast', { title: 'je suis trop simple' }));
+    .addEventListener('click', () => electricToaster.burn('verysimple-toast', { title: 'I\'m very simple' }));
 document.querySelector('#simple-toast')
     .addEventListener('click', async () => {
     const d = new Date(Date.now());
     const parsed = d.toLocaleTimeString();
     const picRaw = await fetch("https://avatars0.githubusercontent.com/u/18089767?s=460&u=1d1ce017bba4d7613e34761858b058e0cf87f334&v=4");
     const pic = await picRaw.blob();
-    electricToaster.burn("simple-toast", { title: `Brossier Theo`,
+    electricToaster.burn("simple-toast", {
+        title: `Brossier Theo`,
         content: "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
         avatar: URL.createObjectURL(pic),
-        date: parsed });
+        date: parsed
+    });
 });
 document.querySelector('#action-toast')
     .addEventListener('click', () => {
     electricToaster.burn("action-toast", {
-        title: "Bonjour",
+        title: "Action toast",
         content: "lorem ipsum dolor sit amet",
         btn: "push me",
         placeholder: "send some text"
@@ -84,4 +96,18 @@ electricToaster.registerToastEvent($burntToast => {
         $burntToast.initiateLeaveAnimation();
     });
 });
+const api = async (url) => {
+    fetch(url)
+        .then(response => response.json())
+        .then(async (data) => {
+        const picRaw = await fetch("https://avatars0.githubusercontent.com/u/18089767?s=460&u=1d1ce017bba4d7613e34761858b058e0cf87f334&v=4");
+        const pic = await picRaw.blob();
+        const userRaw = await fetch(`https://jsonplaceholder.typicode.com/users/${data.userId}`);
+        const user = await userRaw.json();
+        let datas = Object.assign({}, { avatar: URL.createObjectURL(pic) }, data, { username: user.name });
+        console.log('fired from api call');
+        electricToaster.burn('newpost-toast', datas);
+    });
+};
+api('https://jsonplaceholder.typicode.com/posts/27');
 //# sourceMappingURL=app.js.map

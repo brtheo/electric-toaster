@@ -1,11 +1,22 @@
-import { LitElement, CSSResult, TemplateResult } from 'lit-element';
-import { ToastType } from './ElectricToaster';
-export declare class BurntToast extends LitElement {
-    type: ToastType;
+export declare class BurntToast extends HTMLElement {
     private enter?;
     private leave?;
     private animationDefinition;
     constructor();
+    private get type();
+    private _belongsToAnElectricToaster;
+    /**
+     * Defines the keyframes and options for enter animation.
+     * @remarks
+     * Defines the callback onfinish of the enter animation to an anonymous function that returns the void method initiateLeaveAnimation().
+     */
+    initiateEnterAnimation(): void;
+    /**
+     * Defines the keyframes and options for leave animation.
+     * @remarks
+     * Defines the callback onfinish of leave animation to an anonymous function that returns the void method remove() on the element.
+     */
+    initiateLeaveAnimation(): void;
     /**
      * @fires toastBurning Is now added to DOM
      */
@@ -14,19 +25,4 @@ export declare class BurntToast extends LitElement {
      * @fires toastEaten Is now removed from DOM
      */
     disconnectedCallback(): void;
-    private _belongsToAnElectricToaster;
-    /**
-     * Defines the keyframes and options for {@link #enter} animation.
-     * @remarks
-     * Defines the callback onfinish of the {@link #enter} animation to an anonymous function that returns the void method {@link #initiateLeaveAnimation()}.
-     */
-    initiateEnterAnimation(): void;
-    /**
-     * Defines the keyframes and options for t{@link #leave} animation.
-     * @remarks
-     * Defines the callback onfinish of {@link #leave} animation to an anonymous function that returns the void method remove() on the element.
-     */
-    initiateLeaveAnimation(): void;
-    static get styles(): CSSResult;
-    render(): TemplateResult;
 }

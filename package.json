@@ -12,9 +12,7 @@
   },
   "author": "Brossier Theo",
   "license": "ISC",
-  "dependencies": {
-    "lit-element": "^2.3.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "es-dev-server": "^1.46.5",
     "typescript": "^3.8.3"

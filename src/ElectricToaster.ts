@@ -1,3 +1,4 @@
+import '../src/BurntToast'
 import { BurntToast } from "./BurntToast"
 export type ToastAnimation = {
     enter: [Keyframe[], KeyframeAnimationOptions],
@@ -5,12 +6,12 @@ export type ToastAnimation = {
 }
 export type ToastTemplateData = {[key:string]: string | number | boolean}
 export type ToastTemplate = (data: ToastTemplateData) => string
-export type ToastType = 'action' | 'simple' | 'static'
+export type ToastType = 'action' | 'simple'
 export type ToastTemplateKey = string
 export type Toast = {
     template: ToastTemplate
-    type: ToastType
-    animation: ToastAnimation 
+    type?: ToastType
+    animation: ToastAnimation
 }  
 type TemplateHolder = Map<ToastTemplateKey, Toast>
 
@@ -38,8 +39,8 @@ export default class ElectricToaster {
     }
 
     /**
-     * Add the {@link #BurntToast} element to the page.
-     * Inject the animations to the {@link #BurntToast} element.
+     * Add the BurntToast element to the page.
+     * Inject the animations to the BurntToast element.
      */
     private _fire(): void {
         document.body.insertAdjacentHTML('beforeend',this.queue[0][0])  
@@ -66,6 +67,7 @@ export default class ElectricToaster {
      * @param toast Object containing the template function, the type and the animations keyframes and options to use corresponding with the templateKey provided.
      */
     public registerTemplate(templateKey: string, toast: Toast): void {
+        if(!toast.type) toast.type = 'simple'
         this.templates.set(templateKey, toast)
     }
 

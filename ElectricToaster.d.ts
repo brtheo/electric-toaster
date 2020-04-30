@@ -1,3 +1,4 @@
+import '../src/BurntToast';
 import { BurntToast } from "./BurntToast";
 export declare type ToastAnimation = {
     enter: [Keyframe[], KeyframeAnimationOptions];
@@ -7,11 +8,11 @@ export declare type ToastTemplateData = {
     [key: string]: string | number | boolean;
 };
 export declare type ToastTemplate = (data: ToastTemplateData) => string;
-export declare type ToastType = 'action' | 'simple' | 'static';
+export declare type ToastType = 'action' | 'simple';
 export declare type ToastTemplateKey = string;
 export declare type Toast = {
     template: ToastTemplate;
-    type: ToastType;
+    type?: ToastType;
     animation: ToastAnimation;
 };
 declare type TemplateHolder = Map<ToastTemplateKey, Toast>;
@@ -29,8 +30,8 @@ export default class ElectricToaster {
      */
     constructor(templateKey: ToastTemplateKey, toast: Toast);
     /**
-     * Add the {@link #BurntToast} element to the page.
-     * Inject the animations to the {@link #BurntToast} element.
+     * Add the BurntToast element to the page.
+     * Inject the animations to the BurntToast element.
      */
     private _fire;
     /**

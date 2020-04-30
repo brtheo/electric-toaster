@@ -1,3 +1,4 @@
+import '../src/BurntToast';
 export default class ElectricToaster {
     /**
      * Defines a toast template
@@ -19,8 +20,8 @@ export default class ElectricToaster {
         });
     }
     /**
-     * Add the {@link #BurntToast} element to the page.
-     * Inject the animations to the {@link #BurntToast} element.
+     * Add the BurntToast element to the page.
+     * Inject the animations to the BurntToast element.
      */
     _fire() {
         document.body.insertAdjacentHTML('beforeend', this.queue[0][0]);
@@ -46,6 +47,8 @@ export default class ElectricToaster {
      * @param toast Object containing the template function, the type and the animations keyframes and options to use corresponding with the templateKey provided.
      */
     registerTemplate(templateKey, toast) {
+        if (!toast.type)
+            toast.type = 'simple';
         this.templates.set(templateKey, toast);
     }
     /**
