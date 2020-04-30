@@ -1,6 +1,6 @@
 {
   "name": "electric-toaster",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A helper class to fire a <burnt-toast> web component",
   "main": "ElectricToaster.js",
   "types": "ElectricToaster.d.ts",
