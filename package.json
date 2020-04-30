@@ -23,7 +23,7 @@
     "dev": "es-dev-server --watch"
   },
   "author": "Brossier Theo",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "es-dev-server": "^1.46.5",
