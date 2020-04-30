@@ -88,7 +88,6 @@ document.querySelector('#simple-toast')
 				avatar: URL.createObjectURL(pic),
 				date: parsed
 			}
-
 		)
 	})
 
