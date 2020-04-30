@@ -1,6 +1,6 @@
 {
   "name": "electric-toaster",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A helper class to fire a <burnt-toast> web component",
   "main": "ElectricToaster.js",
   "types": "ElectricToaster.d.ts",
@@ -8,6 +8,14 @@
     "type" : "git",
     "url" : "https://github.com/brtheo/electric-toaster.git"
   },
+  "keywords": [
+    "toast",
+    "toaster",
+    "notif",
+    "notification",
+    "web component",
+    "custom element"
+  ],
   "scripts": {
     "build": "tsc --build tsconfig.json && tsc --build demo/tsconfig.json",
     "prepublishOnly": "npm run build",
