@@ -4,7 +4,7 @@
 
 A helper class to fire some `<burnt-toast>` web components in queue
 
-[Demo](https://brtheo.github.io/electric-toaster)
+[Demo](https://brtheo.github.io/electric-toaster/demo/index.html)
 
 ## Installation
 
